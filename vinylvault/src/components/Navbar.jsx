@@ -1,12 +1,27 @@
+
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ cartCount, onToggleCart }) {
   return (
-    <nav>
-      <Link to="/">Catalog</Link>
-      <Link to="/album/alb-01">Sample Album</Link>
-      <Link to="/checkout">Checkout</Link>
-    </nav>
+    <header className="site-header">
+      <nav className="navbar">
+        <Link to="/" className="brand">
+          VINYLVAULT
+        </Link>
+
+        <div className="nav-actions">
+          <Link to="/">Browse Records</Link>
+
+          <button
+            type="button"
+            onClick={onToggleCart}
+            className="cart-toggle"
+          >
+            Cart ({cartCount})
+          </button>
+        </div>
+      </nav>
+    </header>
   );
 }
 
