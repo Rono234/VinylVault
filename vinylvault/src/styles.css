@@ -1,0 +1,306 @@
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #24211e;
+  background: #f8f6f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Navigation */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #dedbd5;
+}
+
+.navbar {
+  max-width: 1280px;
+  margin: auto;
+  padding: 22px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Shared buttons */
+
+button,
+.checkout-button {
+  border: 0;
+  padding: 12px 18px;
+  background: #292521;
+  color: white;
+  border-radius: 4px;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Catalog */
+
+.catalog-page,
+.album-detail-page,
+.checkout-page,
+.confirmation-page {
+  max-width: 1280px;
+  margin: auto;
+  padding: 48px 32px;
+}
+
+.catalog-hero {
+  text-align: center;
+  padding: 35px 0 45px;
+}
+
+.catalog-hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+}
+
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.genre-filter button {
+  background: transparent;
+  color: #292521;
+  border: 1px solid #b9b4ac;
+}
+
+.genre-filter button.active {
+  background: #292521;
+  color: white;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.album-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.album-card-info {
+  padding: 16px 0;
+}
+
+.album-card h2 {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.album-card p {
+  color: #615d58;
+}
+
+.album-price {
+  font-weight: bold;
+}
+
+.album-genre {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Album detail */
+
+.album-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.detail-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.detail-price {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Cart drawer */
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}
+
+.cart-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.cart-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: min(440px, 100%);
+  padding: 28px;
+  background: white;
+  overflow-y: auto;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
+  animation: slide-in 0.25s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.cart-item img {
+  width: 95px;
+  height: 95px;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-footer {
+  margin-top: 30px;
+}
+
+.checkout-button {
+  display: block;
+  text-align: center;
+}
+
+/* Checkout */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  margin-top: 32px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.form-error {
+  color: #bd3030;
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .album-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .album-detail-layout,
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 18px;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  .catalog-page,
+  .album-detail-page,
+  .checkout-page {
+    padding: 28px 18px;
+  }
+
+  .album-grid {
+    gap: 16px;
+  }
+}

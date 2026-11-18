@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,7 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
     address: "",
     city: "",
     postalCode: "",
-    cardDetails: ""
+    cardDetails: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -19,7 +18,7 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
 
     setFormData((currentData) => ({
       ...currentData,
-      [name]: value
+      [name]: value,
     }));
   }
 
@@ -58,7 +57,7 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
     return (
       <main className="checkout-page">
         <h1>Your Cart Is Empty</h1>
-        <Link to="/">Browse Records</Link>
+        <Link to="/"></Link>
       </main>
     );
   }
@@ -68,7 +67,7 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
     { name: "address", label: "Address" },
     { name: "city", label: "City" },
     { name: "postalCode", label: "Postal Code" },
-    { name: "cardDetails", label: "Card Details (Demo Only)" }
+    { name: "cardDetails", label: "Card Details (Demo Only)" },
   ];
 
   return (
@@ -80,16 +79,13 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
           <h2>Shipping and Payment Information</h2>
 
           <p>
-            This is a classroom demonstration.
-            Do not enter real payment details.
+            Enter Sample Shipping and Payment Information
           </p>
 
           <form onSubmit={handleSubmit} noValidate>
             {fields.map((field) => (
               <div className="form-group" key={field.name}>
-                <label htmlFor={field.name}>
-                  {field.label}
-                </label>
+                <label htmlFor={field.name}>{field.label}</label>
 
                 <input
                   id={field.name}
@@ -101,9 +97,7 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
                 />
 
                 {errors[field.name] && (
-                  <small className="form-error">
-                    {errors[field.name]}
-                  </small>
+                  <small className="form-error">{errors[field.name]}</small>
                 )}
               </div>
             ))}
@@ -124,15 +118,11 @@ function CheckoutPage({ cart, cartSubtotal, onClearCart }) {
                 <p>Quantity: {item.quantity}</p>
               </div>
 
-              <p>
-                ${(item.price * item.quantity).toFixed(2)}
-              </p>
+              <p>${(item.price * item.quantity).toFixed(2)}</p>
             </div>
           ))}
 
-          <h3>
-            Total: ${cartSubtotal.toFixed(2)}
-          </h3>
+          <h3>Total: ${cartSubtotal.toFixed(2)}</h3>
         </section>
       </div>
     </main>

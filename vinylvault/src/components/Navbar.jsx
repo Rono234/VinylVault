@@ -10,7 +10,7 @@ function Navbar({ cartCount, onToggleCart }) {
         </Link>
 
         <div className="nav-actions">
-          <Link to="/">Browse Records</Link>
+          {/* <Link to="/">Browse Records</Link> */}
 
           <button
             type="button"
